@@ -1,4 +1,6 @@
 package com.zen.dddpracticemodel.store.values;
 
-public class EmployeeID {
+import co.com.sofka.domain.generic.Identity;
+
+public class EmployeeID extends Identity {
 }

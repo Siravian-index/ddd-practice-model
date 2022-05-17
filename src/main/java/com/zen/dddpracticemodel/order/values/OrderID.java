@@ -1,4 +1,6 @@
 package com.zen.dddpracticemodel.order.values;
 
-public class OrderID {
+import co.com.sofka.domain.generic.Identity;
+
+public class OrderID extends Identity {
 }

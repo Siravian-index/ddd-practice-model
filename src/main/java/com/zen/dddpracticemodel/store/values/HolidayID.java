@@ -1,4 +1,6 @@
 package com.zen.dddpracticemodel.store.values;
 
-public class HolidayID {
+import co.com.sofka.domain.generic.Identity;
+
+public class HolidayID extends Identity {
 }
