@@ -8,7 +8,7 @@ public class IsAvailable implements ValueObject<Boolean> {
 
     protected Boolean value;
 
-    IsAvailable(Boolean bool) {
+    public IsAvailable(Boolean bool) {
         this.value = Objects.requireNonNull(bool, "Boolean must have a value");
     }
 
