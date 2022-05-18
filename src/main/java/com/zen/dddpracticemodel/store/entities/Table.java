@@ -6,6 +6,8 @@ import com.zen.dddpracticemodel.store.values.Material;
 import com.zen.dddpracticemodel.store.values.Size;
 import com.zen.dddpracticemodel.store.values.TableID;
 
+import java.util.Objects;
+
 public class Table extends Entity<TableID> {
     protected Size size;
     protected IsAvailable isAvailable;
@@ -56,5 +58,19 @@ public class Table extends Entity<TableID> {
 
     public void setMaterial(Material material) {
         this.material = material;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Table table = (Table) o;
+        return Objects.equals(size, table.size) && Objects.equals(isAvailable, table.isAvailable) && Objects.equals(material, table.material);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), size, isAvailable, material);
     }
 }
