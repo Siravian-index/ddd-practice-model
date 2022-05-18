@@ -18,13 +18,12 @@ public class Store extends AggregateEvent<StoreID> {
     protected List<Order> orderList;
     protected Set<Table> tableSet;
     protected Set<Product> productSet;
-    protected Kitchen kitchen;
     protected Set<Employee> employeeSet;
+    protected Kitchen kitchen;
     protected Holiday holiday;
-    protected Store(StoreID entityId, BusinessDays businessDays, Set<Product> productSet) {
+    protected Store(StoreID entityId, BusinessDays businessDays) {
         super(entityId);
-        appendChange(new StoreCreated(businessDays, productSet)).apply();
-//        subscribe(new StoreChange(this));
+        appendChange(new StoreCreated(businessDays)).apply();
     }
 
     private Store(StoreID entityId) {
