@@ -9,7 +9,7 @@ public class Money implements ValueObject<BigDecimal> {
 
     private final BigDecimal value;
 
-    Money(BigDecimal value) {
+    public Money(BigDecimal value) {
         this.value = Objects.requireNonNull(value, "Money must have a value");
     }
 

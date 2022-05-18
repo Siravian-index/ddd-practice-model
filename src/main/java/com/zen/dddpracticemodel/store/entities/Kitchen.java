@@ -9,7 +9,7 @@ import com.zen.dddpracticemodel.store.values.KitchenID;
 import java.util.Objects;
 import java.util.Set;
 
-public class Kitchen extends Entity<KitchenID> {
+public class    Kitchen extends Entity<KitchenID> {
 
     protected Set<Ingredient> ingredientSet;
     protected Set<Equipment> equipmentSet;

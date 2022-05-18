@@ -8,7 +8,7 @@ import java.util.Objects;
 public class TotalCost implements ValueObject<Money> {
     private final Money money;
 
-    TotalCost(Money money) {
+    public TotalCost(Money money) {
         this.money = money;
     }
 

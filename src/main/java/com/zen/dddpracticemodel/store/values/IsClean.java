@@ -8,7 +8,7 @@ public class IsClean implements ValueObject<Boolean> {
 
     private final Boolean value;
 
-    IsClean(Boolean value) {
+    public IsClean(Boolean value) {
         this.value = Objects.requireNonNull(value);
     }
 

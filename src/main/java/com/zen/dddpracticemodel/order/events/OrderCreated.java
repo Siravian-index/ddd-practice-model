@@ -1,4 +1,18 @@
 package com.zen.dddpracticemodel.order.events;
 
-public class OrderCreated {
+import co.com.sofka.domain.generic.DomainEvent;
+import com.zen.dddpracticemodel.order.values.Status;
+
+public class OrderCreated extends DomainEvent {
+    private final Status status;
+
+    public OrderCreated(Status status) {
+        super("com.zen.dddpracticemodel.OrderCreated");
+        this.status = status;
+
+    }
+
+    public Status status() {
+        return status;
+    }
 }

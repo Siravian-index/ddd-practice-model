@@ -24,6 +24,7 @@ public class Store extends AggregateEvent<StoreID> {
     protected Store(StoreID entityId, Name name) {
         super(entityId);
         appendChange(new StoreCreated(name)).apply();
+        subscribe(new StoreChange(this));
     }
 
     private Store(StoreID entityId) {

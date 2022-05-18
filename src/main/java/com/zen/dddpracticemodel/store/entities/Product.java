@@ -1,6 +1,7 @@
 package com.zen.dddpracticemodel.store.entities;
 
 import co.com.sofka.domain.generic.Entity;
+import com.zen.dddpracticemodel.client.values.Money;
 import com.zen.dddpracticemodel.store.values.Name;
 import com.zen.dddpracticemodel.store.values.Price;
 import com.zen.dddpracticemodel.store.values.ProductID;
@@ -10,12 +11,12 @@ import java.util.Objects;
 
 public class Product extends Entity<ProductID> {
 
-    protected Price price;
+    protected Money price;
     protected Stock stock;
     protected Name name;
 
 
-    protected Product(ProductID entityId, Stock stock, Name name, Price price) {
+    protected Product(ProductID entityId, Stock stock, Name name, Money price) {
         super(entityId);
         this.stock = stock;
         this.name = name;
@@ -25,7 +26,7 @@ public class Product extends Entity<ProductID> {
         super(entityId);
     }
 
-    public static Product from(ProductID entityId, Stock stock, Name name, Price price) {
+    public static Product from(ProductID entityId, Stock stock, Name name, Money price) {
         Product product = new Product(entityId);
         product.stock = stock;
         product.name = name;
@@ -39,11 +40,11 @@ public class Product extends Entity<ProductID> {
 //    void disposeProduct() {}
 
 
-    public Price getPrice() {
+    public Money getPrice() {
         return price;
     }
 
-    public void setPrice(Price price) {
+    public void setPrice(Money price) {
         this.price = price;
     }
 
