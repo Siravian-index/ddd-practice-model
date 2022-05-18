@@ -2,25 +2,25 @@ package com.zen.dddpracticemodel.order.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import com.zen.dddpracticemodel.order.values.CreationDate;
-import com.zen.dddpracticemodel.order.values.OrderID;
+import com.zen.dddpracticemodel.order.values.DetailID;
 
-public class OrderPlaced extends DomainEvent {
+public class DetailsPlaced extends DomainEvent {
 
     private final CreationDate creationDate;
-    private final OrderID orderID;
+    private final DetailID detailID;
 
-    public OrderPlaced(OrderID orderID, CreationDate createdAt) {
+    public DetailsPlaced(DetailID detailID, CreationDate createdAt) {
         super("com.zen.dddpracticemodel.OrderPlaced");
-        this.orderID = orderID;
+        this.detailID = detailID;
         this.creationDate = createdAt;
 
     }
 
-    public CreationDate CreationDate() {
+    public CreationDate creationDate() {
         return creationDate;
     }
 
-    public OrderID OrderID() {
-        return orderID;
+    public DetailID detailID() {
+        return detailID;
     }
 }

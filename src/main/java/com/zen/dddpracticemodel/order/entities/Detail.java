@@ -33,4 +33,28 @@ public class Detail extends Entity<DetailID> {
         }
         return new Money(total);
     }
+
+    public Money getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(Money totalCost) {
+        this.totalCost = totalCost;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
+    public CreationDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(CreationDate createdAt) {
+        this.createdAt = createdAt;
+    }
 }
