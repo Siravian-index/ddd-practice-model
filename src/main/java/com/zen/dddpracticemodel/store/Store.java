@@ -31,10 +31,14 @@ public class Store extends AggregateEvent<StoreID> {
         subscribe(new StoreChange(this));
     }
 
+
+//    is this method signature only for aggregates?
     public static Store from(StoreID aggregateId, List<DomainEvent> list) {
         Store store = new Store(aggregateId);
         list.forEach(store::applyEvent);
         return store;
     }
+
+//    throw events to create kitchen and Holiday.
 
 }

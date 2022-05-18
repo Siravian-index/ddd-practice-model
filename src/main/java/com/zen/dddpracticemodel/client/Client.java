@@ -7,4 +7,8 @@ public class Client extends Entity<ClientID> {
     public Client(ClientID entityId) {
         super(entityId);
     }
+
+//    protected constructor
+//    private constructor
+//    static constructor
 }
