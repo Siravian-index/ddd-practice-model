@@ -15,4 +15,12 @@ public class StoreCreated extends DomainEvent {
         this.businessDays = businessDays;
         this.productSet = productSet;
     }
+
+    public BusinessDays BusinessDays() {
+        return businessDays;
+    }
+
+    public Set<Product> ProductSet() {
+        return productSet;
+    }
 }

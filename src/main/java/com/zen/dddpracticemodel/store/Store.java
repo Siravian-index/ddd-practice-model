@@ -1,6 +1,7 @@
 package com.zen.dddpracticemodel.store;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import com.zen.dddpracticemodel.client.Client;
 import com.zen.dddpracticemodel.order.Order;
 import com.zen.dddpracticemodel.store.entities.*;
@@ -20,9 +21,21 @@ public class Store extends AggregateEvent<StoreID> {
     protected Kitchen kitchen;
     protected Set<Employee> employeeSet;
     protected Holiday holiday;
-    public Store(StoreID entityId, BusinessDays businessDays, Set<Product> productSet) {
+    protected Store(StoreID entityId, BusinessDays businessDays, Set<Product> productSet) {
         super(entityId);
         appendChange(new StoreCreated(businessDays, productSet)).apply();
-
+//        subscribe(new StoreChange(this));
     }
+
+    private Store(StoreID entityId) {
+        super(entityId);
+        subscribe(new StoreChange(this));
+    }
+
+    public static Store from(StoreID aggregateId, List<DomainEvent> list) {
+        Store store = new Store(aggregateId);
+        list.forEach(store::applyEvent);
+        return store;
+    }
+
 }
