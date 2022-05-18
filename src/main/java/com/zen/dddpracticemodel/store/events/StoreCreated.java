@@ -1,18 +1,17 @@
 package com.zen.dddpracticemodel.store.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import com.zen.dddpracticemodel.store.values.BusinessDays;
+import com.zen.dddpracticemodel.store.values.Name;
 
 public class StoreCreated extends DomainEvent {
-    private final BusinessDays businessDays;
+    private final Name name;
 
-    public StoreCreated(BusinessDays businessDays) {
+    public StoreCreated(Name name) {
         super("com.zen.dddpracticemodel.StoreCreated");
-        this.businessDays = businessDays;
+        this.name = name;
     }
 
-    public BusinessDays BusinessDays() {
-        return businessDays;
+    public Name Name() {
+        return name;
     }
-
 }

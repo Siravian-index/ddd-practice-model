@@ -10,7 +10,7 @@ public class StoreChange extends EventChange {
     protected StoreChange(Store store) {
 //        Modify the class in this space. This is like a constructor based on events
         apply((StoreCreated event) -> {
-            store.businessDays = event.BusinessDays();
+            store.name = event.Name();
             store.productSet = new HashSet<>();
             store.clientSet = new HashSet<>();
             store.orderList = new ArrayList<>();
