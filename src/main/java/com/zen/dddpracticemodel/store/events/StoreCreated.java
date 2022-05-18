@@ -7,7 +7,7 @@ public class StoreCreated extends DomainEvent {
     private final Name name;
 
     public StoreCreated(Name name) {
-        super("com.zen.dddpracticemodel.StoreCreated");
+        super("com.zen.dddpracticemodel.storecreated");
         this.name = name;
     }
 

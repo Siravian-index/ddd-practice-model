@@ -31,10 +31,27 @@ public class Table extends Entity<TableID> {
 
 
 
-//    void clean(){}
+    public void clean(){
+        if (!this.isClean.value()) {
+            this.isClean = new IsClean(true);
+            this.isAvailable = new IsAvailable(true);
+        }
+    }
 //    void assign(){}
 //    void move(){}
 
+    public void tableVisited() {
+        this.isAvailable = new IsAvailable(false);
+    }
+
+
+    public IsClean getIsClean() {
+        return isClean;
+    }
+
+    public void setIsClean(IsClean isClean) {
+        this.isClean = isClean;
+    }
 
     public Size getSize() {
         return size;

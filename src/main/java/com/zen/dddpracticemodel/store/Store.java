@@ -5,11 +5,11 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.zen.dddpracticemodel.client.Client;
 import com.zen.dddpracticemodel.order.Order;
 import com.zen.dddpracticemodel.store.entities.*;
-import com.zen.dddpracticemodel.store.events.StoreCreated;
-import com.zen.dddpracticemodel.store.values.Name;
-import com.zen.dddpracticemodel.store.values.StoreID;
+import com.zen.dddpracticemodel.store.events.*;
+import com.zen.dddpracticemodel.store.values.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public class Store extends AggregateEvent<StoreID> {
@@ -41,5 +41,29 @@ public class Store extends AggregateEvent<StoreID> {
     }
 
 //    throw events to create kitchen and Holiday.
+
+    public void prepareTable(TableID tableID) {
+        appendChange(new TablePrepared(tableID)).apply();
+    }
+
+    public void attendTable(TableID tableID) {
+        appendChange(new TableAttended(tableID)).apply();
+    }
+
+    public void visitTable(TableID tableID) {
+        appendChange(new TableVisited(tableID)).apply();
+    }
+
+    public void restockSupply(ProductID productID, Stock amount) {
+        appendChange(new SupplyRestocked(productID, amount)).apply();
+    }
+
+    public Optional<Table> findTableById(TableID tableID) {
+        return this.tableSet.stream().filter(table -> table.identity().equals(tableID)).findFirst();
+    }
+
+    public Optional<Product> findProductById(ProductID productID) {
+        return this.productSet.stream().filter(table -> table.identity().equals(productID)).findFirst();
+    }
 
 }

@@ -36,8 +36,10 @@ public class Product extends Entity<ProductID> {
 
 //    void sellProduct() {}
 //    void displayProduct() {}
-//    void reStockProduct(){}
-//    void disposeProduct() {}
+    public void reStockProduct(Stock amount){
+        this.stock = new Stock(this.stock.value() + amount.value());
+    }
+    public void disposeProduct() {}
 
 
     public Money getPrice() {

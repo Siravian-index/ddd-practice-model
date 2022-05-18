@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Stock implements ValueObject<Integer> {
     private final Integer amount;
 
-    Stock(Integer amount) {
+    public Stock(Integer amount) {
         this.amount = Objects.requireNonNull(amount, "Stock amount must have a value");
     }
 
