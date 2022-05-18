@@ -58,6 +58,14 @@ public class Store extends AggregateEvent<StoreID> {
         appendChange(new SupplyRestocked(productID, amount)).apply();
     }
 
+    public void renameProduct(ProductID productID, Name newName) {
+        appendChange(new ProductRenamed(productID, newName)).apply();
+    }
+
+    public void sellProduct(ProductID productID, Stock amount) {
+        appendChange(new ProductSold(productID, amount)).apply();
+    }
+
     public Optional<Table> findTableById(TableID tableID) {
         return this.tableSet.stream().filter(table -> table.identity().equals(tableID)).findFirst();
     }

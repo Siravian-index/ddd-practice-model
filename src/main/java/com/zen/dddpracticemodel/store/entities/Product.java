@@ -16,6 +16,7 @@ public class Product extends Entity<ProductID> {
     protected Name name;
 
 
+
     protected Product(ProductID entityId, Stock stock, Name name, Money price) {
         super(entityId);
         this.stock = stock;
@@ -34,8 +35,12 @@ public class Product extends Entity<ProductID> {
         return product;
     }
 
-//    void sellProduct() {}
-//    void displayProduct() {}
+    public void sellProduct(Stock amount) {
+        this.stock = new Stock(this.stock.value() - amount.value());
+    }
+    public void renameProduct(Name name) {
+        this.name = name;
+    }
     public void reStockProduct(Stock amount){
         this.stock = new Stock(this.stock.value() + amount.value());
     }

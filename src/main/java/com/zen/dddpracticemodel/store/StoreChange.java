@@ -5,7 +5,6 @@ import com.zen.dddpracticemodel.store.entities.Product;
 import com.zen.dddpracticemodel.store.entities.Table;
 import com.zen.dddpracticemodel.store.events.*;
 import com.zen.dddpracticemodel.store.values.IsAvailable;
-import com.zen.dddpracticemodel.store.values.Stock;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -44,6 +43,16 @@ public class StoreChange extends EventChange {
         apply((SupplyRestocked event ) -> {
             Product product = store.findProductById(event.getProductID()).orElseThrow();
             product.reStockProduct(event.getAmount());
+        });
+
+        apply((ProductRenamed event) -> {
+            Product product = store.findProductById(event.getProductID()).orElseThrow();
+            product.renameProduct(event.getName());
+        });
+
+        apply((ProductSold event) -> {
+            Product product = store.findProductById(event.getProductID()).orElseThrow();
+            product.sellProduct(event.getAmount());
         });
 
 
