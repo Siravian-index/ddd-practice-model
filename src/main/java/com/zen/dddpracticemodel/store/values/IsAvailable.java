@@ -4,25 +4,26 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Size implements ValueObject<Integer> {
-    protected Integer value;
+public class IsAvailable implements ValueObject<Boolean> {
 
-    Size(Integer value) {
-        this.value = Objects.requireNonNull(value, "Size must have a value");
+    protected Boolean value;
+
+    IsAvailable(Boolean bool) {
+        this.value = Objects.requireNonNull(bool, "Boolean must have a value");
     }
 
 
     @Override
-    public Integer value() {
-        return null;
+    public Boolean value() {
+        return this.value;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Size size = (Size) o;
-        return Objects.equals(value, size.value);
+        IsAvailable that = (IsAvailable) o;
+        return Objects.equals(value, that.value);
     }
 
     @Override
