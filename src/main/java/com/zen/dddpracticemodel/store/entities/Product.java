@@ -44,7 +44,6 @@ public class Product extends Entity<ProductID> {
     public void reStockProduct(Stock amount){
         this.stock = new Stock(this.stock.value() + amount.value());
     }
-    public void disposeProduct() {}
 
 
     public Money getPrice() {

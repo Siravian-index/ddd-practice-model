@@ -55,6 +55,12 @@ public class StoreChange extends EventChange {
             product.sellProduct(event.getAmount());
         });
 
+        apply((ProductDisposed event) -> {
+            Product product = store.findProductById(event.getProductID()).orElseThrow();
+            store.productSet.remove(product);
+        });
+
+
 
     }
 }

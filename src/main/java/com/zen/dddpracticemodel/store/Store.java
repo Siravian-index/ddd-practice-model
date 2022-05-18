@@ -66,6 +66,11 @@ public class Store extends AggregateEvent<StoreID> {
         appendChange(new ProductSold(productID, amount)).apply();
     }
 
+    public void disposeProduct(ProductID productID) {
+        appendChange(new ProductDisposed(productID)).apply();
+    }
+
+
     public Optional<Table> findTableById(TableID tableID) {
         return this.tableSet.stream().filter(table -> table.identity().equals(tableID)).findFirst();
     }
@@ -73,5 +78,6 @@ public class Store extends AggregateEvent<StoreID> {
     public Optional<Product> findProductById(ProductID productID) {
         return this.productSet.stream().filter(table -> table.identity().equals(productID)).findFirst();
     }
+
 
 }
