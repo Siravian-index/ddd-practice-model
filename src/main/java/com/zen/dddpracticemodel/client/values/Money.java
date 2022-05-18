@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Money implements ValueObject<BigDecimal> {
 
-    protected BigDecimal value;
+    private final BigDecimal value;
 
     Money(BigDecimal value) {
         this.value = Objects.requireNonNull(value, "Money must have a value");

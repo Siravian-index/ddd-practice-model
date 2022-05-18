@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class IsAvailable implements ValueObject<Boolean> {
 
-    protected Boolean value;
+    private final Boolean value;
 
     public IsAvailable(Boolean bool) {
         this.value = Objects.requireNonNull(bool, "Boolean must have a value");

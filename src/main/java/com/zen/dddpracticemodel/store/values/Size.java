@@ -5,7 +5,7 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.util.Objects;
 
 public class Size implements ValueObject<Integer> {
-    protected Integer value;
+    private final Integer value;
 
     Size(Integer value) {
         this.value = Objects.requireNonNull(value, "Size must have a value");

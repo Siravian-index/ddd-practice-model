@@ -5,7 +5,7 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.util.Objects;
 
 public class Status implements ValueObject<StatusEnum> {
-    protected StatusEnum value;
+    private final StatusEnum value;
 
     Status(StatusEnum status) {
         this.value = Objects.requireNonNull(status);

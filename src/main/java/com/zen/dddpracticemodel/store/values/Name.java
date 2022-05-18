@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Name implements ValueObject<String> {
 
-    protected String value;
+    private final String value;
 
     Name(String value) {
         this.value = Objects.requireNonNull(value, "Name must have a value");

@@ -6,7 +6,7 @@ import com.zen.dddpracticemodel.client.values.Money;
 import java.util.Objects;
 
 public class Salary implements ValueObject<Money> {
-    protected Money money;
+    private final Money money;
 
     Salary(Money money) {
         this.money = money;

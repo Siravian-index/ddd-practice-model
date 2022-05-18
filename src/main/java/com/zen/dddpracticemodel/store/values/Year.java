@@ -5,7 +5,7 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.util.Objects;
 
 public class Year implements ValueObject<Integer> {
-    protected Integer years;
+    private final Integer years;
 
     Year(Integer years) {
         this.years = Objects.requireNonNull(years);

@@ -5,7 +5,7 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.util.Objects;
 
 public class Stock implements ValueObject<Integer> {
-    protected Integer amount;
+    private final Integer amount;
 
     Stock(Integer amount) {
         this.amount = Objects.requireNonNull(amount, "Stock amount must have a value");

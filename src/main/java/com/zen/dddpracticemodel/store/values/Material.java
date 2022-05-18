@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Material implements ValueObject<Name> {
 
-    protected Name name;
+    private final Name name;
 
     Material(Name name) {
         this.name = name;

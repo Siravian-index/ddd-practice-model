@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class IsClean implements ValueObject<Boolean> {
 
-    protected Boolean value;
+    private final Boolean value;
 
     IsClean(Boolean value) {
         this.value = Objects.requireNonNull(value);
@@ -15,5 +15,18 @@ public class IsClean implements ValueObject<Boolean> {
     @Override
     public Boolean value() {
         return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        IsClean isClean = (IsClean) o;
+        return Objects.equals(value, isClean.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

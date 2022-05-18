@@ -4,19 +4,17 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Equipment implements ValueObject<Equipment> {
+public class Equipment implements ValueObject<Name> {
 
-    protected Name name;
-    protected Description description;
+    private final Name name;
 
-    Equipment(Name name, Description description) {
+    Equipment(Name name) {
         this.name = name;
-        this.description = description;
     }
 
     @Override
-    public Equipment value() {
-        return this;
+    public Name value() {
+        return this.name;
     }
 
     @Override
@@ -24,11 +22,11 @@ public class Equipment implements ValueObject<Equipment> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Equipment equipment = (Equipment) o;
-        return Objects.equals(name, equipment.name) && Objects.equals(description, equipment.description);
+        return Objects.equals(name, equipment.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description);
+        return Objects.hash(name);
     }
 }

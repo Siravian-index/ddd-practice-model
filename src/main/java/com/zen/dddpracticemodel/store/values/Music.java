@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Music implements ValueObject<Name> {
 
-    protected Name name;
+    private final Name name;
 
     Music(Name name) {
         this.name = name;

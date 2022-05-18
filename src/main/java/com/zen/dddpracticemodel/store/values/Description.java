@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Description implements ValueObject<String> {
 
-    protected String value;
+    private final String value;
 
     Description(String value) {
         this. value = Objects.requireNonNull(value, "Description must have a value");

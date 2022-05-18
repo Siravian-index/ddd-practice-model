@@ -5,16 +5,16 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class CreationDate implements ValueObject<CreationDate> {
-    protected LocalDateTime createdAt;
+public class CreationDate implements ValueObject<String> {
+    private final LocalDateTime createdAt;
 
     CreationDate() {
         this.createdAt = LocalDateTime.now();
     }
 
     @Override
-    public CreationDate value() {
-        return this;
+    public String value() {
+        return this.createdAt.toString();
     }
 
     @Override

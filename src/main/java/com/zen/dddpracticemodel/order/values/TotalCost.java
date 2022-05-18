@@ -6,7 +6,7 @@ import com.zen.dddpracticemodel.client.values.Money;
 import java.util.Objects;
 
 public class TotalCost implements ValueObject<Money> {
-    protected Money money;
+    private final Money money;
 
     TotalCost(Money money) {
         this.money = money;
@@ -15,7 +15,7 @@ public class TotalCost implements ValueObject<Money> {
 
     @Override
     public Money value() {
-        return null;
+        return this.money;
     }
 
     @Override

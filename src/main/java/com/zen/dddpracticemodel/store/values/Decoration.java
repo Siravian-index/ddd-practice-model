@@ -4,18 +4,16 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Decoration implements ValueObject<Decoration> {
-    protected Name name;
-    protected Description description;
+public class Decoration implements ValueObject<Name> {
+    private final Name name;
 
-    Decoration(Name name, Description description) {
+    public Decoration(Name name) {
         this.name = name;
-        this.description = description;
     }
 
     @Override
-    public Decoration value() {
-        return this;
+    public Name value() {
+        return this.name;
     }
 
     @Override
@@ -23,11 +21,11 @@ public class Decoration implements ValueObject<Decoration> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Decoration that = (Decoration) o;
-        return Objects.equals(name, that.name) && Objects.equals(description, that.description);
+        return Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description);
+        return Objects.hash(name);
     }
 }
