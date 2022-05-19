@@ -70,6 +70,15 @@ public class StoreChange extends EventChange {
             store.kitchen.prepareOrder(order);
         });
 
+        apply((MusicToggled event) -> {
+            store.holiday.changeMusic(event.getMusic());
+        });
+
+        apply((HolidayDescriptionUpdated event) -> {
+            store.holiday.updateDescription(event.getDescription());
+        });
+
+
 
 
 
