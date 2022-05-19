@@ -4,6 +4,7 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.zen.dddpracticemodel.client.Client;
 import com.zen.dddpracticemodel.client.values.ClientID;
+import com.zen.dddpracticemodel.client.values.Money;
 import com.zen.dddpracticemodel.order.Order;
 import com.zen.dddpracticemodel.order.values.OrderID;
 import com.zen.dddpracticemodel.store.entities.*;
@@ -104,6 +105,11 @@ public class Store extends AggregateEvent<StoreID> {
 
     public void orderProducts(ClientID clientID, List<Product> products) {
         appendChange(new ProductOrdered(clientID, products)).apply();
+    }
+
+//    client
+    public void enterClient(Name name, Money money) {
+        appendChange(new ClientEntered(name, money)).apply();
     }
 
 

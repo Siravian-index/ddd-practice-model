@@ -33,8 +33,6 @@ public class Client extends AggregateEvent<ClientID> {
         return client;
     }
 
-
-
     public Name getName() {
         return name;
     }
