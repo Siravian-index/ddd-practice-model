@@ -22,6 +22,7 @@ public class Store extends AggregateEvent<StoreID> {
     protected Set<Employee> employeeSet;
     protected Kitchen kitchen;
     protected Holiday holiday;
+
     protected Store(StoreID entityId, Name name) {
         super(entityId);
         appendChange(new StoreCreated(name)).apply();
@@ -34,7 +35,7 @@ public class Store extends AggregateEvent<StoreID> {
     }
 
 
-//    is this method signature only for aggregates?
+    //    is this method signature only for aggregates?
     public static Store from(StoreID aggregateId, List<DomainEvent> list) {
         Store store = new Store(aggregateId);
         list.forEach(store::applyEvent);
@@ -47,6 +48,9 @@ public class Store extends AggregateEvent<StoreID> {
         appendChange(new KitchenCreated(entityId, equipmentSet, ingredientSet, employeeSet, isClean)).apply();
     }
 
+    public void createHoliday(HolidayID entityId, Description description, Music music, Decoration decoration) {
+        appendChange(new HolidayCreated(entityId, description, music, decoration)).apply();
+    }
 
 
     public void prepareTable(TableID tableID) {
