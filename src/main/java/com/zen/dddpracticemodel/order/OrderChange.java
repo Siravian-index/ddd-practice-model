@@ -12,9 +12,7 @@ public class OrderChange extends EventChange {
         });
 
         apply((DetailsPlaced event) -> {
-            var detail = new Detail(event.detailID(), event.creationDate());
-            order.detail = detail;
-
+            order.detail = new Detail(event.detailID(), event.creationDate());
         });
     }
 }

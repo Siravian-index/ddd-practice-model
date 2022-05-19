@@ -12,13 +12,14 @@ import com.zen.dddpracticemodel.store.values.KitchenID;
 import java.util.Objects;
 import java.util.Set;
 
-public class    Kitchen extends Entity<KitchenID> {
+public class Kitchen extends Entity<KitchenID> {
 
     protected Set<Ingredient> ingredientSet;
     protected Set<Equipment> equipmentSet;
     protected Set<Employee> employeeSet;
 
     protected IsClean isClean;
+
     protected Kitchen(KitchenID entityId, Set<Equipment> equipmentSet, Set<Ingredient> ingredientSet, Set<Employee> employeeSet, IsClean isClean) {
         super(entityId);
         this.equipmentSet = equipmentSet;
@@ -27,11 +28,12 @@ public class    Kitchen extends Entity<KitchenID> {
         this.isClean = isClean;
 
     }
+
     private Kitchen(KitchenID entityId) {
         super(entityId);
     }
 
-    public static Kitchen from (KitchenID entityId, Set<Equipment> equipmentSet, Set<Ingredient> ingredientSet, Set<Employee> employeeSet, IsClean isClean) {
+    public static Kitchen from(KitchenID entityId, Set<Equipment> equipmentSet, Set<Ingredient> ingredientSet, Set<Employee> employeeSet, IsClean isClean) {
         Kitchen kitchen = new Kitchen(entityId);
         kitchen.equipmentSet = equipmentSet;
         kitchen.ingredientSet = ingredientSet;
@@ -46,10 +48,13 @@ public class    Kitchen extends Entity<KitchenID> {
         }
 
     }
-    public void prepareOrder(Order order){
+
+    public void prepareOrder(Order order) {
         order.setStatus(new Status(StatusEnum.READY));
     }
-    void reStock(){}
+
+    void reStock() {
+    }
 
 
     public Set<Ingredient> getIngredientSet() {

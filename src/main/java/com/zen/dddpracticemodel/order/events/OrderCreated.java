@@ -7,7 +7,7 @@ public class OrderCreated extends DomainEvent {
     private final Status status;
 
     public OrderCreated(Status status) {
-        super("com.zen.dddpracticemodel.OrderCreated");
+        super("com.zen.dddpracticemodel.ordercreated");
         this.status = status;
 
     }
