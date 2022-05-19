@@ -6,6 +6,7 @@ import com.zen.dddpracticemodel.order.entities.Detail;
 import com.zen.dddpracticemodel.order.events.DetailsPlaced;
 import com.zen.dddpracticemodel.order.events.OrderCreated;
 import com.zen.dddpracticemodel.order.values.*;
+import com.zen.dddpracticemodel.store.entities.Product;
 
 import java.util.List;
 
@@ -29,6 +30,10 @@ public class Order extends AggregateEvent<OrderID> {
         Order order = new Order(orderID);
         list.forEach(order::applyEvent);
         return order;
+    }
+
+    public void addProducts(List<Product> products) {
+        this.detail.addProduct(products);
     }
 
     public void placeDetails(CreationDate createdAt) {

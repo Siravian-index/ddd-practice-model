@@ -102,6 +102,10 @@ public class Store extends AggregateEvent<StoreID> {
         appendChange(new OrderPaid(clientID)).apply();
     }
 
+    public void orderProducts(ClientID clientID, List<Product> products) {
+        appendChange(new ProductOrdered(clientID, products)).apply();
+    }
+
 
     public Optional<Table> findTableById(TableID tableID) {
         return this.tableSet.stream().filter(table -> table.identity().equals(tableID)).findFirst();

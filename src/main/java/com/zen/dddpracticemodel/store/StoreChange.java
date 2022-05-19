@@ -94,6 +94,11 @@ public class StoreChange extends EventChange {
             order.payOrderStatus();
         });
 
+        apply((ProductOrdered event) -> {
+            Client client = store.findClientById(event.getClientID()).orElseThrow();
+            Order order = store.findOrderById(client.getOrderID()).orElseThrow();
+            order.addProducts(event.getProducts());
+        });
 
 
     }

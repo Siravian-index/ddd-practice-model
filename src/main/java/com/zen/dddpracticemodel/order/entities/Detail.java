@@ -21,12 +21,12 @@ public class Detail extends Entity<DetailID> {
         this.productList = new ArrayList<>();
     }
 
-    public void addProduct(Product product) {
-        this.productList.add(product);
+    public void addProduct(List<Product> products) {
+        this.productList.addAll(products);
         this.totalCost = updatePrice(this.productList);
     }
 
-    private Money updatePrice(List<Product> productList) {
+    public Money updatePrice(List<Product> productList) {
         BigDecimal total = new BigDecimal(0);
         for (Product product : productList) {
             total = total.add(product.getPrice().value());
