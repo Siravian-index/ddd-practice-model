@@ -1,6 +1,7 @@
 package com.zen.dddpracticemodel.store;
 
 import co.com.sofka.domain.generic.EventChange;
+import com.zen.dddpracticemodel.client.Client;
 import com.zen.dddpracticemodel.order.Order;
 import com.zen.dddpracticemodel.store.entities.Holiday;
 import com.zen.dddpracticemodel.store.entities.Kitchen;
@@ -43,7 +44,7 @@ public class StoreChange extends EventChange {
             table.tableVisited();
         });
 
-        apply((SupplyRestocked event ) -> {
+        apply((SupplyRestocked event) -> {
             Product product = store.findProductById(event.getProductID()).orElseThrow();
             product.reStockProduct(event.getAmount());
         });
@@ -80,15 +81,18 @@ public class StoreChange extends EventChange {
             store.holiday.updateDescription(event.getDescription());
         });
 
-        apply((KitchenCreated event) ->{
+        apply((KitchenCreated event) -> {
             store.kitchen = new Kitchen(event.getEntityId(), event.getEquipmentSet(), event.getIngredientSet(), event.getEmployeeSet(), event.getIsClean());
         });
-         apply((HolidayCreated event) -> {
-             store.holiday = new Holiday(event.getEntityId(), event.getDescription(), event.getMusic(), event.getDecoration());
-         });
+        apply((HolidayCreated event) -> {
+            store.holiday = new Holiday(event.getEntityId(), event.getDescription(), event.getMusic(), event.getDecoration());
+        });
 
-
-
+        apply((OrderPaid event) -> {
+            Client client = store.findClientById(event.getClientID()).orElseThrow();
+            Order order = store.findOrderById(client.getOrderID()).orElseThrow();
+            order.payOrderStatus();
+        });
 
 
 

@@ -3,6 +3,7 @@ package com.zen.dddpracticemodel.store;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.zen.dddpracticemodel.client.Client;
+import com.zen.dddpracticemodel.client.values.ClientID;
 import com.zen.dddpracticemodel.order.Order;
 import com.zen.dddpracticemodel.order.values.OrderID;
 import com.zen.dddpracticemodel.store.entities.*;
@@ -96,6 +97,10 @@ public class Store extends AggregateEvent<StoreID> {
     public void updateHolidayDescription(Description description) {
         appendChange(new HolidayDescriptionUpdated(description)).apply();
     }
+    
+    public void payOrder(ClientID clientID) {
+        appendChange(new OrderPaid(clientID)).apply();
+    }
 
 
     public Optional<Table> findTableById(TableID tableID) {
@@ -108,6 +113,10 @@ public class Store extends AggregateEvent<StoreID> {
 
     public Optional<Order> findOrderById(OrderID orderID) {
         return this.orderList.stream().filter(table -> table.identity().equals(orderID)).findFirst();
+    }
+
+    public Optional<Client> findClientById(ClientID clientID) {
+        return this.clientSet.stream().filter(table -> table.identity().equals(clientID)).findFirst();
     }
 
 }

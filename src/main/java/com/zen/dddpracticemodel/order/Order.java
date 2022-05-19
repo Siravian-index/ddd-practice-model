@@ -40,8 +40,8 @@ public class Order extends AggregateEvent<OrderID> {
 
     }
 
-    public void payOrderStatus(Order order) {
-        order.setStatus(new Status(StatusEnum.PAID));
+    public void payOrderStatus() {
+        this.setStatus(new Status(StatusEnum.PAID));
     }
 
     public Detail getDetail() {
