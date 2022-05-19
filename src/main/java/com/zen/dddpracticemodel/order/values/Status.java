@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Status implements ValueObject<StatusEnum> {
     private final StatusEnum value;
 
-    Status(StatusEnum status) {
+    public Status(StatusEnum status) {
         this.value = Objects.requireNonNull(status);
     }
 
@@ -30,6 +30,6 @@ public class Status implements ValueObject<StatusEnum> {
     }
 }
 
-enum StatusEnum {
-    OPEN, PAID, CANCELLED
+public enum StatusEnum {
+    OPEN, PAID, CANCELLED, READY
 }

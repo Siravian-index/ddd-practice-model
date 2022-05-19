@@ -1,6 +1,9 @@
 package com.zen.dddpracticemodel.store.entities;
 
 import co.com.sofka.domain.generic.Entity;
+import com.zen.dddpracticemodel.order.Order;
+import com.zen.dddpracticemodel.order.values.Status;
+import com.zen.dddpracticemodel.order.values.StatusEnum;
 import com.zen.dddpracticemodel.store.values.Equipment;
 import com.zen.dddpracticemodel.store.values.Ingredient;
 import com.zen.dddpracticemodel.store.values.IsClean;
@@ -37,11 +40,14 @@ public class    Kitchen extends Entity<KitchenID> {
         return kitchen;
     }
 
-    void cleanKitchen() {
+    public void cleanKitchen() {
+        if (!this.isClean.value()) {
+            this.isClean = new IsClean(true);
+        }
 
     }
-    void prepareOrder(){
-
+    public void prepareOrder(Order order){
+        order.setStatus(new Status(StatusEnum.READY));
     }
     void reStock(){}
 

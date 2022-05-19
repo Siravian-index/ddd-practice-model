@@ -16,6 +16,7 @@ public class Order extends AggregateEvent<OrderID> {
     protected Detail detail;
     protected Status status;
 
+
     protected Order(OrderID entityId, Status status) {
         super(entityId);
         appendChange(new OrderCreated(status)).apply();

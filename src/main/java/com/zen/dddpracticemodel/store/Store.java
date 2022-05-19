@@ -4,6 +4,7 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.zen.dddpracticemodel.client.Client;
 import com.zen.dddpracticemodel.order.Order;
+import com.zen.dddpracticemodel.order.values.OrderID;
 import com.zen.dddpracticemodel.store.entities.*;
 import com.zen.dddpracticemodel.store.events.*;
 import com.zen.dddpracticemodel.store.values.*;
@@ -70,6 +71,14 @@ public class Store extends AggregateEvent<StoreID> {
         appendChange(new ProductDisposed(productID)).apply();
     }
 
+    public void cleanKitchen(KitchenID kitchenID) {
+        appendChange(new KitchenCleaned(kitchenID)).apply();
+    }
+
+    public void prepareOrder(OrderID orderID) {
+        appendChange(new OrderPrepared(orderID)).apply();
+    }
+
 
     public Optional<Table> findTableById(TableID tableID) {
         return this.tableSet.stream().filter(table -> table.identity().equals(tableID)).findFirst();
@@ -79,5 +88,8 @@ public class Store extends AggregateEvent<StoreID> {
         return this.productSet.stream().filter(table -> table.identity().equals(productID)).findFirst();
     }
 
+    public Optional<Order> findOrderById(OrderID orderID) {
+        return this.orderList.stream().filter(table -> table.identity().equals(orderID)).findFirst();
+    }
 
 }
