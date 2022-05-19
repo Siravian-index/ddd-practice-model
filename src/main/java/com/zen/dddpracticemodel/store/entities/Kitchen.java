@@ -20,7 +20,7 @@ public class Kitchen extends Entity<KitchenID> {
 
     protected IsClean isClean;
 
-    protected Kitchen(KitchenID entityId, Set<Equipment> equipmentSet, Set<Ingredient> ingredientSet, Set<Employee> employeeSet, IsClean isClean) {
+    public Kitchen(KitchenID entityId, Set<Equipment> equipmentSet, Set<Ingredient> ingredientSet, Set<Employee> employeeSet, IsClean isClean) {
         super(entityId);
         this.equipmentSet = equipmentSet;
         this.ingredientSet = ingredientSet;

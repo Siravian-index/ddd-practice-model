@@ -43,6 +43,12 @@ public class Store extends AggregateEvent<StoreID> {
 
 //    throw events to create kitchen and Holiday.
 
+    public void createKitchen(KitchenID entityId, Set<Equipment> equipmentSet, Set<Ingredient> ingredientSet, Set<Employee> employeeSet, IsClean isClean) {
+        appendChange(new KitchenCreated(entityId, equipmentSet, ingredientSet, employeeSet, isClean)).apply();
+    }
+
+
+
     public void prepareTable(TableID tableID) {
         appendChange(new TablePrepared(tableID)).apply();
     }

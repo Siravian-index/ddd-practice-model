@@ -5,10 +5,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.zen.dddpracticemodel.order.entities.Detail;
 import com.zen.dddpracticemodel.order.events.DetailsPlaced;
 import com.zen.dddpracticemodel.order.events.OrderCreated;
-import com.zen.dddpracticemodel.order.values.CreationDate;
-import com.zen.dddpracticemodel.order.values.DetailID;
-import com.zen.dddpracticemodel.order.values.OrderID;
-import com.zen.dddpracticemodel.order.values.Status;
+import com.zen.dddpracticemodel.order.values.*;
 
 import java.util.List;
 
@@ -41,6 +38,10 @@ public class Order extends AggregateEvent<OrderID> {
 
     public void addDetail(Detail detail) {
 
+    }
+
+    public void payOrderStatus(Order order) {
+        order.setStatus(new Status(StatusEnum.PAID));
     }
 
     public Detail getDetail() {

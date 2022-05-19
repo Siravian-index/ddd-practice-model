@@ -2,6 +2,7 @@ package com.zen.dddpracticemodel.store;
 
 import co.com.sofka.domain.generic.EventChange;
 import com.zen.dddpracticemodel.order.Order;
+import com.zen.dddpracticemodel.store.entities.Kitchen;
 import com.zen.dddpracticemodel.store.entities.Product;
 import com.zen.dddpracticemodel.store.entities.Table;
 import com.zen.dddpracticemodel.store.events.*;
@@ -76,6 +77,10 @@ public class StoreChange extends EventChange {
 
         apply((HolidayDescriptionUpdated event) -> {
             store.holiday.updateDescription(event.getDescription());
+        });
+
+        apply((KitchenCreated event) ->{
+            store.kitchen = new Kitchen(event.getEntityId(), event.getEquipmentSet(), event.getIngredientSet(), event.getEmployeeSet(), event.getIsClean());
         });
 
 
