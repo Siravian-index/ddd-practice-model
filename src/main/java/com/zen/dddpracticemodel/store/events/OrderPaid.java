@@ -1,4 +1,5 @@
 package com.zen.dddpracticemodel.client.events;
 
-public class OrderPaid {
+public class OrderPaid  {
+
 }
