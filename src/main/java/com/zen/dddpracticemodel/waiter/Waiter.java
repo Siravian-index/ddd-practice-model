@@ -2,15 +2,20 @@ package com.zen.dddpracticemodel.waiter;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
+import com.zen.dddpracticemodel.waiter.entities.Order;
+import com.zen.dddpracticemodel.waiter.entities.Table;
 import com.zen.dddpracticemodel.waiter.events.WaiterCreated;
 import com.zen.dddpracticemodel.waiter.values.Name;
 import com.zen.dddpracticemodel.waiter.values.WaiterID;
 
 import java.util.List;
+import java.util.Set;
 
 public class Waiter extends AggregateEvent<WaiterID> {
 
     protected Name name;
+    protected Set<Table> tableSet;
+    protected Set<Order> orderSet;
 
     public Waiter(WaiterID entityId, Name name) {
         super(entityId);
