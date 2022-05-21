@@ -8,8 +8,10 @@ import com.zen.dddpracticemodel.waiter.values.Price;
 public class Order extends Entity<OrderID> {
     protected Description description;
     protected Price price;
-    public Order(OrderID entityId) {
+    public Order(OrderID entityId, Description description, Price price) {
         super(entityId);
+        this.description = description;
+        this.price  = price;
     }
 
     public Description getDescription() {
