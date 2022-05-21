@@ -7,7 +7,7 @@ public class WaiterCreated extends DomainEvent {
     private final Name name;
 
     public WaiterCreated(Name name) {
-        super("com.zen.dddpracticemodel.waiter");
+        super("com.zen.dddpracticemodel.waiter.waitercreated");
         this.name = name;
     }
 

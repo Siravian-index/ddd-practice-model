@@ -4,8 +4,7 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.zen.dddpracticemodel.waiter.entities.Order;
 import com.zen.dddpracticemodel.waiter.entities.Table;
-import com.zen.dddpracticemodel.waiter.events.OrderAdded;
-import com.zen.dddpracticemodel.waiter.events.WaiterCreated;
+import com.zen.dddpracticemodel.waiter.events.*;
 import com.zen.dddpracticemodel.waiter.values.*;
 
 import java.util.List;
@@ -40,8 +39,32 @@ public class Waiter extends AggregateEvent<WaiterID> {
         applyEvent(new OrderAdded(orderID, description, price));
     }
 
-//    public void updateOrderDescription(OrderID orderID, Description description) {
-//        applyEvent(new OrderDescriptionUpdated(orderID, description));
-//    }
+    public void removeOrder(OrderID orderID) {
+        applyEvent(new OrderRemoved(orderID));
+    }
 
+    public void updateOrderDescription(OrderID orderID, Description description) {
+        applyEvent(new OrderDescriptionUpdated(orderID, description));
+    }
+
+    public void updateOrderPrice(OrderID orderID, Price price) {
+        applyEvent(new OrderPriceUpdated(orderID, price));
+    }
+
+    public void addTable(Size size, Location location) {
+        TableID tableID = new TableID();
+        applyEvent(new TableAdded(tableID, size, location));
+    }
+
+    public void removeTable(TableID tableID) {
+        applyEvent(new TableRemoved(tableID));
+    }
+
+    public void updateTableSize(TableID tableID, Size size) {
+        applyEvent(new TableSizeUpdated(tableID, size));
+    }
+
+    public void updateTableLocation(TableID tableID, Location location) {
+        applyEvent(new TableLocationUpdated(tableID, location));
+    }
 }
