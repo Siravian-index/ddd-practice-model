@@ -1,9 +1,8 @@
 package com.zen.dddpracticemodel.cashier;
 
 import co.com.sofka.domain.generic.EventChange;
-import com.zen.dddpracticemodel.cashier.events.CashierCreated;
-import com.zen.dddpracticemodel.cashier.events.ProductAdded;
-import com.zen.dddpracticemodel.cashier.events.ProductRemoved;
+import com.zen.dddpracticemodel.cashier.entities.Product;
+import com.zen.dddpracticemodel.cashier.events.*;
 
 import java.util.HashSet;
 
@@ -15,24 +14,25 @@ public class CashierChange extends EventChange {
         });
 
         apply((ProductAdded event) -> {
-
+            Product product  = new Product(event.getEntityId(), event.getName(), event.getPrice());
+            cashier.productSet.add(product);
         });
 
         apply((ProductRemoved event) -> {
-
+            cashier.productSet.removeIf(product -> product.identity().equals(event.getEntityId()));
         });
 
-        apply(( event) -> {
-
+        apply((ProductStatusUpdated event) -> {
+            Product product1 = cashier.productSet.stream().filter(product -> product.identity().equals(event.getProductID())).findFirst().orElseThrow();
+            product1.updateStatus(event.getStatus());
         });
-        apply(( event) -> {
-
+        apply((ProductNameUpdated event) -> {
+            Product product1 = cashier.productSet.stream().filter(product -> product.identity().equals(event.getProductID())).findFirst().orElseThrow();
+            product1.updateName(event.getName());
         });
-        apply(( event) -> {
-
-        });
-        apply(( event) -> {
-
+        apply((ProductPriceUpdated event) -> {
+            Product product1 = cashier.productSet.stream().filter(product -> product.identity().equals(event.getProductID())).findFirst().orElseThrow();
+            product1.updatePrice(event.getPrice());
         });
     }
 }
