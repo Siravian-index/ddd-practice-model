@@ -18,7 +18,7 @@ public class Waiter extends AggregateEvent<WaiterID> {
 
     public Waiter(WaiterID entityId, Name name) {
         super(entityId);
-        applyEvent(new WaiterCreated(name));
+        appendChange(new WaiterCreated(name)).apply();
     }
 
     private Waiter(WaiterID entityId) {
@@ -36,35 +36,35 @@ public class Waiter extends AggregateEvent<WaiterID> {
 
     public void addOrder(Description description, Price price) {
         OrderID orderID = new OrderID();
-        applyEvent(new OrderAdded(orderID, description, price));
+        appendChange(new OrderAdded(orderID, description, price)).apply();
     }
 
     public void removeOrder(OrderID orderID) {
-        applyEvent(new OrderRemoved(orderID));
+        appendChange(new OrderRemoved(orderID)).apply();
     }
 
     public void updateOrderDescription(OrderID orderID, Description description) {
-        applyEvent(new OrderDescriptionUpdated(orderID, description));
+        appendChange(new OrderDescriptionUpdated(orderID, description)).apply();
     }
 
     public void updateOrderPrice(OrderID orderID, Price price) {
-        applyEvent(new OrderPriceUpdated(orderID, price));
+        appendChange(new OrderPriceUpdated(orderID, price)).apply();
     }
 
     public void addTable(Size size, Location location) {
         TableID tableID = new TableID();
-        applyEvent(new TableAdded(tableID, size, location));
+        appendChange(new TableAdded(tableID, size, location)).apply();
     }
 
     public void removeTable(TableID tableID) {
-        applyEvent(new TableRemoved(tableID));
+        appendChange(new TableRemoved(tableID)).apply();
     }
 
     public void updateTableSize(TableID tableID, Size size) {
-        applyEvent(new TableSizeUpdated(tableID, size));
+        appendChange(new TableSizeUpdated(tableID, size)).apply();
     }
 
     public void updateTableLocation(TableID tableID, Location location) {
-        applyEvent(new TableLocationUpdated(tableID, location));
+        appendChange(new TableLocationUpdated(tableID, location)).apply();
     }
 }
