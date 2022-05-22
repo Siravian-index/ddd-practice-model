@@ -3,11 +3,10 @@ package com.zen.dddpracticemodel.cashier;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.zen.dddpracticemodel.cashier.entities.Product;
-import com.zen.dddpracticemodel.cashier.events.CashierCreated;
-import com.zen.dddpracticemodel.cashier.events.ProductAdded;
-import com.zen.dddpracticemodel.cashier.events.ProductRemoved;
+import com.zen.dddpracticemodel.cashier.events.*;
 import com.zen.dddpracticemodel.cashier.values.CashierID;
 import com.zen.dddpracticemodel.cashier.values.ProductID;
+import com.zen.dddpracticemodel.cashier.values.Status;
 import com.zen.dddpracticemodel.waiter.values.Name;
 import com.zen.dddpracticemodel.waiter.values.Price;
 
@@ -42,5 +41,16 @@ public class Cashier extends AggregateEvent<CashierID> {
     }
     public void removeProduct( ProductID entityId ) {
         appendChange(new ProductRemoved(entityId)).apply();
+    }
+
+    public void updateProductStatus(ProductID productID, Status status) {
+        appendChange(new ProductStatusUpdated(productID, status)).apply();
+
+    }
+    public void updateProductPrice(ProductID productID, Price price) {
+        appendChange(new ProductPriceUpdated(productID, price)).apply();
+    }
+    public void updateProductName(ProductID productID, Name name) {
+        appendChange(new ProductNameUpdated(productID, name)).apply();
     }
 }
