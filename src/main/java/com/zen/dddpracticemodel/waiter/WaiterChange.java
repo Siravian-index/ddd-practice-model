@@ -2,6 +2,7 @@ package com.zen.dddpracticemodel.waiter;
 
 import co.com.sofka.domain.generic.EventChange;
 import com.zen.dddpracticemodel.waiter.entities.Order;
+import com.zen.dddpracticemodel.waiter.entities.Table;
 import com.zen.dddpracticemodel.waiter.events.*;
 
 import java.util.HashSet;
@@ -25,32 +26,43 @@ public class WaiterChange extends EventChange {
         });
 
         apply((OrderDescriptionUpdated event) -> {
-//            TODO: logic
+            Order order = waiter.orderSet.stream().filter(o -> o.identity().equals(event.getOrderID())).findFirst().orElseThrow();
+            order.setDescription(event.getDescription());
+            waiter.orderSet.removeIf(o -> o.identity().equals(event.getOrderID()));
+            waiter.orderSet.add(order);
+
         });
 
         apply((OrderPriceUpdated event) -> {
-//            TODO: logic
-
+            Order order = waiter.orderSet.stream().filter(o -> o.identity().equals(event.getOrderID())).findFirst().orElseThrow();
+            order.setPrice(event.getPrice());
+            waiter.orderSet.removeIf(o -> o.identity().equals(event.getOrderID()));
+            waiter.orderSet.add(order);
         });
 
         apply((TableAdded event) ->{
-//            TODO: logic
+            Table table = new Table(event.getTableID(), event.getSize(), event.getLocation());
+            waiter.tableSet.add(table);
 
         });
 
         apply((TableRemoved event) ->{
-//            TODO: logic
-
+            waiter.tableSet.removeIf(table -> table.identity().equals(event.getTableID()));
         });
 
         apply((TableSizeUpdated event) ->{
-//            TODO: logic
+            Table table = waiter.tableSet.stream().filter(o -> o.identity().equals(event.getTableID())).findFirst().orElseThrow();
+            table.updateSize(event.getSize());
+            waiter.tableSet.removeIf(o -> o.identity().equals(event.getTableID()));
+            waiter.tableSet.add(table);
 
         });
 
         apply((TableLocationUpdated event) ->{
-//            TODO: logic
-
+            Table table = waiter.tableSet.stream().filter(o -> o.identity().equals(event.getTableID())).findFirst().orElseThrow();
+            table.updateLocation(event.getLocation());
+            waiter.tableSet.removeIf(o -> o.identity().equals(event.getTableID()));
+            waiter.tableSet.add(table);
         });
     }
 
