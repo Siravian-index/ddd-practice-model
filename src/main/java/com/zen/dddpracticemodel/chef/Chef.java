@@ -5,8 +5,10 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.zen.dddpracticemodel.chef.entities.Cook;
 import com.zen.dddpracticemodel.chef.entities.Recipe;
 import com.zen.dddpracticemodel.chef.events.*;
-import com.zen.dddpracticemodel.chef.values.*;
-import com.zen.dddpracticemodel.waiter.WaiterChange;
+import com.zen.dddpracticemodel.chef.values.ChefID;
+import com.zen.dddpracticemodel.chef.values.CookID;
+import com.zen.dddpracticemodel.chef.values.CulinaryTool;
+import com.zen.dddpracticemodel.chef.values.RecipeID;
 import com.zen.dddpracticemodel.waiter.values.Description;
 import com.zen.dddpracticemodel.waiter.values.Name;
 
