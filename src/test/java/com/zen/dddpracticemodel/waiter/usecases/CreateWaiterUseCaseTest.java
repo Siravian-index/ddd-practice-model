@@ -14,7 +14,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CreateWaiterUseCaseTest {
-    private CreateWaiterUseCase useCase;
 
     @Test
     void createWaiterSuccessfully() {
@@ -23,7 +22,7 @@ class CreateWaiterUseCaseTest {
         var name = new Name("Juan");
         var command = new CreateWaiter(trainerID, name);
 
-        useCase = new CreateWaiterUseCase();
+        CreateWaiterUseCase useCase = new CreateWaiterUseCase();
 //        when
         List<DomainEvent> domainEvents = UseCaseHandler.getInstance()
                 .syncExecutor(useCase, new RequestCommand<>(command))

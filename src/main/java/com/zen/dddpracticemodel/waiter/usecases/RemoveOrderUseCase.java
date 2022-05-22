@@ -11,7 +11,9 @@ public class RemoveOrderUseCase extends UseCase<RequestCommand<RemoveOrder>, Res
     public void executeUseCase(RequestCommand<RemoveOrder> removeOrderRequestCommand) {
         var command = removeOrderRequestCommand.getCommand();
         var waiter = Waiter.from(command.getWaiterID(), repository().getEventsBy(command.getWaiterID().value()));
+        System.out.println(waiter.name);
         waiter.removeOrder(command.getOrderID());
+//        System.out.println(waiter.name);
         emit().onResponse(new ResponseEvents(waiter.getUncommittedChanges()));
     }
 }

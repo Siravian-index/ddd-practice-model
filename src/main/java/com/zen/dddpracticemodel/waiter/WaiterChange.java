@@ -46,7 +46,7 @@ public class WaiterChange extends EventChange {
 
         });
 
-        apply((TableRemoved event) ->{
+        apply((TableRemoved event) -> {
             waiter.tableSet.removeIf(table -> table.identity().equals(event.getTableID()));
         });
 

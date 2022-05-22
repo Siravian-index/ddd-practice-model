@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class Waiter extends AggregateEvent<WaiterID> {
 
-    protected Name name;
+    public Name name;
     protected Set<Table> tableSet;
     protected Set<Order> orderSet;
 
