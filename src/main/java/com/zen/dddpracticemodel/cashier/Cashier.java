@@ -34,12 +34,13 @@ public class Cashier extends AggregateEvent<CashierID> {
         return cashier;
     }
 
-//    events
-    public void addProduct( Name name, Price price) {
+    //    events
+    public void addProduct(Name name, Price price) {
         ProductID entityId = new ProductID();
         appendChange(new ProductAdded(entityId, name, price)).apply();
     }
-    public void removeProduct( ProductID entityId ) {
+
+    public void removeProduct(ProductID entityId) {
         appendChange(new ProductRemoved(entityId)).apply();
     }
 
@@ -47,9 +48,11 @@ public class Cashier extends AggregateEvent<CashierID> {
         appendChange(new ProductStatusUpdated(productID, status)).apply();
 
     }
+
     public void updateProductPrice(ProductID productID, Price price) {
         appendChange(new ProductPriceUpdated(productID, price)).apply();
     }
+
     public void updateProductName(ProductID productID, Name name) {
         appendChange(new ProductNameUpdated(productID, name)).apply();
     }
